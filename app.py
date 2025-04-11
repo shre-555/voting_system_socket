@@ -169,11 +169,34 @@ def vote():
 
 def get_leaderboard():
     results = db.session.query(
-        PhotoNomination.id, PhotoNomination.title, db.func.count(Vote.id).label('vote_count')
-    ).outerjoin(Vote, PhotoNomination.id == Vote.photo_id).group_by(PhotoNomination.id).all()
+        PhotoNomination.id,
+        PhotoNomination.title,
+        PhotoNomination.image_filename,
+        db.func.count(Vote.id).label('vote_count')
+    ).outerjoin(Vote, PhotoNomination.id == Vote.photo_id
+    ).group_by(PhotoNomination.id
+    ).order_by(db.desc('vote_count')).all()
 
-    leaderboard = [{"id": row.id, "title": row.title, "votes": row.vote_count} for row in results]
+    leaderboard = []
+    last_votes = None
+    current_rank = 0
+
+    for i, row in enumerate(results, 1):
+        if row.vote_count != last_votes:
+            current_rank = i
+
+        leaderboard.append({
+            "id": row.id,
+            "title": row.title,
+            "image_filename": row.image_filename,
+            "votes": row.vote_count,
+            "rank": current_rank
+        })
+
+        last_votes = row.vote_count
+
     return leaderboard
+
 
 @app.route('/leaderboard')
 def leaderboard():
