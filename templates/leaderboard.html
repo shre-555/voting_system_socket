@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <h2>Leaderboard</h2>
+    <ul id="leaderboard">
+        {% for entry in leaderboard %}
+            <li>{{ entry.title }} - {{ entry.votes }} votes</li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        var socket = io.connect("http://" + document.domain + ":" + location.port);
+
+        // Request leaderboard updates
+        socket.emit("request_leaderboard");
+
+        socket.on("update_leaderboard", function(data) {
+            let leaderboardList = document.getElementById("leaderboard");
+            leaderboardList.innerHTML = "";
+            data.forEach(entry => {
+                let item = document.createElement("li");
+                item.textContent = entry.title + " - " + entry.votes + " votes";
+                leaderboardList.appendChild(item);
+            });
+        });
+    </script>
+</body>
+</html>

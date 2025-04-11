@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Best Photography Award</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    </head>
+    <body>
+        <div class="header">
+            <div class="texts">
+                 <h1 style="font-size: 48;">Best Photography Award!</h1>
+                 <h3>Vote for the best photo</h3>
+                 <a href="{{ url_for('register') }}">
+                    <button>Vote Now!</button>
+                 </a>
+            </div>
+        </div>
+    </body>
+</html>

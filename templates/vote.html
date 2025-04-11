@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vote</title>
+</head>
+<body>
+    <h2>Vote for the best Photograph!</h2>
+
+    {% if user_vote %}
+        <p>You have already voted!</p>
+    {% else %}
+        <form method="POST">
+            {% for nomination in nominations %}
+                <input type="radio" name="photo_id" value="{{ nomination.id }}" required>
+                {{ nomination.title }}<br>
+            {% endfor %}
+            <button type="submit">Submit Vote</button>
+        </form>
+    {% endif %}
+
+    <a href="{{ url_for('leaderboard') }}">View Leaderboard</a>
+</body>
+</html>
