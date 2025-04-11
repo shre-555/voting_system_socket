@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+}
+.header {
+    background-image: url('background.jpg');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;   
+    background-position: center; 
+    color: white;
+}
+.texts {
+    padding-top: 15%;
+    text-shadow: 5px;
+    padding-left: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+button {
+    background-color: transparent;
+    border: 2px white solid;
+    color: white;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 20%;
+    font-size: 16;
+}
+
+button:hover {
+    background-color: white;
+    color:black;
+    
+}
