@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>Vote</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vote.css') }}">
 </head>
 <body>
     <h2>Vote for the best Photograph!</h2>
@@ -10,10 +10,16 @@
         <p>You have already voted!</p>
     {% else %}
         <form method="POST">
-            {% for nomination in nominations %}
-                <input type="radio" name="photo_id" value="{{ nomination.id }}" required>
-                {{ nomination.title }}<br>
-            {% endfor %}
+            <div class="card-container">
+                {% for nomination in nominations %}
+                    <div class="card">
+                        <input type="radio" name="photo_id" value="{{ nomination.id }}" required>
+                        <h3>{{ nomination.title }}</h3>
+                        <img src="{{ url_for('static', filename='uploads/' + nomination.image_filename) }}" alt="{{ nomination.title }}">
+                        <p>{{ nomination.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
             <button type="submit">Submit Vote</button>
         </form>
     {% endif %}

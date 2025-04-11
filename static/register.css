@@ -30,6 +30,11 @@ body {
 form {
     padding: 30px;
 }
+
+a {
+    color: #ff9900;
+}
+
 input[type="text"], input[type="password"] {
     width: 40%;
     padding: 10px;

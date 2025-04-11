@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Card container to arrange them in a grid */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin: 50px;
+}
+
+/* Card styles */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Card title */
+.card h3 {
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+/* Card image */
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Card description */
+.card p {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Form and button styles */
+form {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ff7300;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #7a3700;
+}
+
+/* Footer styles */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1em;
+    color: #ff7300;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
