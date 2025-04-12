@@ -4,20 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .welcome {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button, .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover, .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .flash {
+            color: red;
+            margin-top: 20px;
+        }
+
+        form {
+            display: inline;
+        }
+    </style>
 </head>
 <body>
     <h2>Welcome to the Dashboard!</h2>
 
+    <div class="welcome">
+        Hello <strong>{{ username }}</strong>!
+    </div>
+
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
-                <p style="color: red;">{{ message }}</p>
+                <p class="flash">{{ message }}</p>
             {% endfor %}
         {% endif %}
     {% endwith %}
 
-    <form action="{{ url_for('logout') }}" method="GET">
-        <button type="submit">Logout</button>
-    </form>
+    <div class="buttons">
+        <a href="{{ url_for('vote') }}" class="btn">🗳️ Vote Now</a>
+        <a href="{{ url_for('leaderboard') }}" class="btn">📊 Leaderboard</a>
+        <form action="{{ url_for('logout') }}" method="GET">
+            <button type="submit">🚪 Logout</button>
+        </form>
+    </div>
 </body>
 </html>
