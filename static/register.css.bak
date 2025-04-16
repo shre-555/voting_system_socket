@@ -79,7 +79,7 @@ form label {
 
 /* Positioning for each label */
 form label:nth-of-type(1) {
-    top: calc(25% + 160px); /* Username label */
+    top: calc(25% + 175px); /* Username label */
     right: 300px;
     transform: translateY(0%);
 }
